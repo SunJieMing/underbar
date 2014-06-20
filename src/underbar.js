@@ -95,6 +95,15 @@ var _ = {};
   _.reject = function(collection, test) {
     // TIP: see if you can re-use _.filter() here, without simply
     // copying code in and modifying it
+    var tempArr = _.filter(collection, test);
+    for(var i = 0; i < collection.length; i++){
+      for(var j = 0; j < tempArr.length; j++){
+        if(tempArr[j] === collection[i]){
+          collection.splice(i,1);   
+        }
+      }
+    }
+    return collection;
   };
 
   // Produce a duplicate-free version of the array.
